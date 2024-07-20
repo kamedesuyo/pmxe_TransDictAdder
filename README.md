@@ -1,16 +1,40 @@
 # pmxe_TransDictAdder<br>
-このツールはpmxeでの材質名一択翻訳支援ツールです。<br>
-A tool to assist in the translation of material names in PMXEditor.<br>
-# jp
-<h3>使い方</h3><br>
-"和英変換.txt"と同階層に展開する<br>
-材質名をすべてコピーしsource.txtに貼り付ける<br>
-Deepl等で翻訳した結果をtranslate.txtに貼り付ける<br>
-TransDicrAdder.exeを実行する<br>
+「TransDictAdder」は、Pmxeditorを使用して材質名などを翻訳するための補助ツールです。
 
-# en
-<h3>How to use</h3><br>
-Expand to the same directory as "和英変換.txt"<br>.
-Copy and paste all material names into Source.txt<br>
-Paste the results of translation by Deepl, etc. into translate.txt<br>
-Run TransDictAdder.exe<br>
+==========================================================================================
+使用方法
+1.TransDictAdderを"PmxEditor_XXXX\_data\テンプレート"(和英変換.txtと同階層)に展開する
+[画像1]
+2.PmxEditorを開き、材質タブに移動し、編集 → 名称の一択編集 → プルダウンから材質を選択
+3.和名をクリックし、全材質の名前をコピーする
+4.deepl等の翻訳サイトに行き、翻訳する
+5.翻訳前のテキストを"PmxEditor_XXXX\_data\テンプレート\source.txt"に書き込む
+6.翻訳後のテキストを"PmxEditor_XXXX\_data\テンプレート\translate.txtに書き込む"
+7.TransDictAdder.exeを起動し、指示に従う。
+8.PmxEditorの名称の一択編集画面に戻り、編集 → "辞書から和名→英名作成(E) Ctrl+E"をクリック
+9.編集 → "確定(D) Ctrl+P"をクリック
+10.編集 → "辞書から英名→和名作成(J) Ctrl+J"をクリック
+11.編集 → "確定(D) Ctrl+P"をクリック
+12.保存して完了
+
+===========================================================================================
+使用条件
+必須事項: 禁止事項に触れないよう利用し、公式配布モデルの規約に同意できる方のみ使用可能。
+任意事項: クレジット表記は必須ではないが可能であれば明示を推奨。
+
+禁止事項:
+パッケージまたは一部ファイルの再配布・販売（改変後も含む）は禁止。
+規約範囲外の行為や権利者に迷惑がかかる行為は厳禁。
+他者の誹謗中傷目的の利用は禁止。
+政治および宗教関連での使用は禁止。
+
+免責事項
+使用によって生じたいかなる問題に対しても、作者は一切の責任を負いません。
+
+===========================================================================================
+クレジット
+作者：かめのこ
+Twitter: @kamenoko_mmd
+
+release
+v1.0 - (2024/7/20)新規リリース
