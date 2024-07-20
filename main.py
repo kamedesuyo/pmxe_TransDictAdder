@@ -21,6 +21,7 @@ def preprocess_translate_text(translate_path: str) -> None:
                 word_count[word] = 1
                 processed_words.append(word)
         processed_lines.append(' '.join(processed_words))
+    translate_path = translate_path+"_processed.txt"
     with open(translate_path, "w", encoding="utf-8") as f:
         for line in processed_lines:
             print(line.replace(" ", "_"),file=f)
@@ -48,11 +49,11 @@ def create_dict(source_path:str, translate_path:str)->dict:
         print(f"ファイルが見つかりませんでした。{e}")
         input("続行するにはEnterキーを押してください...")
         exit(-1)
+
     if(len(source)!=len(translate)):
         print("source.txtとtranslate.txtの行数が一致しません。")
         input("続行するにはEnterキーを押してください...")
         exit(-1)
-
     for i in range(len(source)):
         source_translate_dict[source[i].strip()] = translate[i].strip()
     return source_translate_dict
@@ -99,7 +100,9 @@ def main():
          
     print("書き込み終了")
     print("処理が完了しました。")
-    input("続行するにはEnterキーを押してください...")
     
+    input("続行するにはEnterキーを押してください...")
+    exit(0)
+
 if __name__ == "__main__":
     main()
