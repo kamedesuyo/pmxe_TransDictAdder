@@ -1,5 +1,9 @@
 # pmxe_TransDictAdder<br>
 「TransDictAdder」は、Pmxeditorを使用して材質名などを翻訳するための補助ツールです。
+source.txtに材質名、translate.txtに翻訳後材質名を入れることで辞書に対して追加で書き込みを行います。
+
+ベースの辞書としてかんな様の配布のcn→jp変換辞書の使用を推奨します。具体的な使い方も載っているので見てみてください。
+https://note.com/kanna3939/n/na94bcef393c3
 
 <h1>使用方法</h1>
     <ol>
