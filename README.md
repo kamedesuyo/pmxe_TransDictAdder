@@ -2,18 +2,20 @@
 「TransDictAdder」は、Pmxeditorを使用して材質名などを翻訳するための補助ツールです。
 
 <h1>使用方法</h1>
-1.TransDictAdderを"PmxEditor_XXXX\_data\テンプレート"(和英変換.txtと同階層)に展開する
-2.PmxEditorを開き、材質タブに移動し、編集 → 名称の一択編集 → プルダウンから材質を選択
-3.和名をクリックし、全材質の名前をコピーする
-4.deepl等の翻訳サイトに行き、翻訳する
-5.翻訳前のテキストを"PmxEditor_XXXX\_data\テンプレート\source.txt"に書き込む
-6.翻訳後のテキストを"PmxEditor_XXXX\_data\テンプレート\translate.txtに書き込む"
-7.TransDictAdder.exeを起動し、指示に従う。
-8.PmxEditorの名称の一択編集画面に戻り、編集 → "辞書から和名→英名作成(E) Ctrl+E"をクリック
-9.編集 → "確定(D) Ctrl+P"をクリック
-10.編集 → "辞書から英名→和名作成(J) Ctrl+J"をクリック
-11.編集 → "確定(D) Ctrl+P"をクリック
-12.保存して完了
+    <ol>
+        <li>TransDictAdderを「PmxEditor_XXXX_data\テンプレート」（和英変換.txtと同階層）に展開する</li>
+        <li>PmxEditorを開き、材質タブに移動し、編集 → 名称の一択編集 → プルダウンから材質を選択</li>
+        <li>和名をクリックし、全材質の名前をコピーする</li>
+        <li>deepl等の翻訳サイトに行き、翻訳する</li>
+        <li>翻訳前のテキストを「PmxEditor_XXXX_data\テンプレート\source.txt」に書き込む</li>
+        <li>翻訳後のテキストを「PmxEditor_XXXX_data\テンプレート\translate.txt」に書き込む</li>
+        <li>TransDictAdder.exeを起動し、指示に従う。</li>
+        <li>PmxEditorの名称の一択編集画面に戻り、編集 → 「辞書から和名→英名作成(E) Ctrl+E」をクリック</li>
+        <li>編集 → 「確定(D) Ctrl+P」をクリック</li>
+        <li>編集 → 「辞書から英名→和名作成(J) Ctrl+J」をクリック</li>
+        <li>編集 → 「確定(D) Ctrl+P」をクリック</li>
+        <li>保存して完了</li>
+    </ol>
 
 <h1>使用条件</h1>
 必須事項: 禁止事項に触れないよう利用し、公式配布モデルの規約に同意できる方のみ使用可能。
