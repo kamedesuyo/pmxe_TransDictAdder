@@ -11,7 +11,7 @@ source.txtに材質名、translate.txtに翻訳後材質名を入れることで
         <li>TransDictAdderを「PmxEditor_XXXX_data\テンプレート」（和英変換.txtと同階層）に展開する</li>
         <li>PmxEditorを開き、材質タブに移動し、編集 → 名称の一択編集 → プルダウンから材質を選択</li>
         <li>和名をクリックし、全材質の名前をコピーする</li>
-        <li>deepl等の翻訳サイトに行き、翻訳する</li>
+        <li>deepl、chatgptなどの翻訳ができるサイトに行き、翻訳する</li>
         <li>翻訳前のテキストを「PmxEditor_XXXX_data\テンプレート\source.txt」に書き込む</li>
         <li>翻訳後のテキストを「PmxEditor_XXXX_data\テンプレート\translate.txt」に書き込む</li>
         <li>TransDictAdder.exeを起動し、指示に従う。</li>
