@@ -51,12 +51,12 @@ def create_dict(source_path: str, translate_path: str) -> dict:
 
     return {source_lines[i].strip(): translate_lines[i].strip() for i in range(len(source_lines))}
 
-def remove_unused_keys_from_dict(source_translate_dict: dict, template_path: str) -> dict:
+def remove_unused_keys_from_dict(source_translate_dict: dict, dictionary_path: str) -> dict:
     """テンプレート内で使用されていない辞書のキーを削除する"""
-    template_lines = read_file_lines(template_path)
+    dictionary_lines = read_file_lines(dictionary_path)
     keys_to_check = set(source_translate_dict.keys())
 
-    for line in template_lines:
+    for line in dictionary_lines:
         keys_to_remove = {key for key in keys_to_check if key in line.split(",")}
         keys_to_check -= keys_to_remove
         for key in keys_to_remove:
@@ -64,10 +64,10 @@ def remove_unused_keys_from_dict(source_translate_dict: dict, template_path: str
 
     return source_translate_dict
 
-def append_to_template(template_path: str, source_translate_dict: dict) -> None:
+def append_to_dictionary(dictionary_path: str, source_translate_dict: dict) -> None:
     """テンプレートファイルに辞書の内容を追加"""
     try:
-        with open(template_path, "a", encoding="utf-8") as file:
+        with open(dictionary_path, "a", encoding="utf-8") as file:
             for key, value in source_translate_dict.items():
                 file.write(f"{value.strip()}, _{key.strip()}\n")
             for key in source_translate_dict.keys():
@@ -77,13 +77,13 @@ def append_to_template(template_path: str, source_translate_dict: dict) -> None:
 
 def main():
     dict_path = ("source.txt", "translate.txt")
-    template_path = "和英変換.txt"
+    dictionary_path = "和英変換.txt"
 
     source_translate_dict = create_dict(*dict_path)
-    source_translate_dict = remove_unused_keys_from_dict(source_translate_dict, template_path)
-    append_to_template(template_path, source_translate_dict)
-
+    source_translate_dict = remove_unused_keys_from_dict(source_translate_dict, dictionary_path)
+    print(source_translate_dict)
     print("辞書の生成が完了しました。")
+    append_to_dictionary(dictionary_path, source_translate_dict)
     print("書き込み終了")
     print("処理が完了しました。")
 
