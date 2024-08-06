@@ -25,7 +25,7 @@ pmxフォルダ内に複数の.pmmを入れることで同時に複数のモデ�
 <h1>クレジット</h1>
 作者：かめのこ<br>
 Twitter: @kamenoko_mmd<br>
-
-release
+<br>
+release<br>
 v1.0 - (2024/07/20)<br>
 v2.0 - (2024/08/06)
