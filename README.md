@@ -5,9 +5,10 @@ pmxフォルダ内に複数の.pmmを入れることで同時に複数のモデ�
 
 <h1>使用方法</h1>
     <ol>pmxフォルダ内に翻訳したいモデルさんのpmmをコピペ<br></ol>
-    <ol>exeを起動し、ChatGPTやDeepl等で翻訳した結果をmaterial_trans_list.txtに入力<br></ol>
+    <ol>TransDictAdder.exeを起動</ol>
+    <ol>material_list.txtが生成されるのでChatGPTやDeepl等で翻訳した結果をmaterial_trans_list.txtに入力<br></ol>
     <ol>dictionary.txtをプラグイン内の辞書と置き換え<br></ol>
-    <ol>小ネタ:「今から3DCGに関する文字を送るので,日本語に翻訳して翻訳結果だけ出力してください.」というプロンプトを使うとうまくいくかもしれません。<br></ol>
+    <ol>小ネタ:ChatGPTに「今から3DCGに関する文字を送るので,日本語に翻訳して翻訳結果だけ出力してください.」というプロンプトを与えるとうまくいくかもしれません。<br></ol>
 <h1>使用条件</h1>
 必須事項: 禁止事項に触れないよう利用し、公式配布モデルの規約に同意できる方のみ使用可能。<br>
 任意事項: クレジット表記は必須ではないが可能であれば明示を推奨。<br>
