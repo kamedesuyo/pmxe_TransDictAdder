@@ -1,26 +1,12 @@
 # pmxe_TransDictAdder<br>
-「TransDictAdder」は、Pmxeditorを使用して材質名などを翻訳するための補助ツールです。<br>
-source.txtに材質名、translate.txtに翻訳後材質名を入れることで辞書に対して追加で書き込みを行います。<br>
-翻訳自体は直でコピペできるので翻訳メインというよりかは辞書の登録が楽になるくらいのものです。<br>
-
-<br>
-ベースの辞書としてかんな様の配布のcn→jp変換辞書の使用を推奨します。具体的な使い方も載っているので見てみてください。: https://note.com/kanna3939/n/na94bcef393c3
+<h5>追加UVの存在しているモデルさんや、pmd形式には対応していません。<br>エラー発生時は大体この理由です</h5>
+「TransDictAdder」は、モデル翻訳支援プラグインを使用する際の辞書を生成するためのアプリケーションです。<br>
+pmx内に複数の.pmmを入れることで同時に複数のモデルさんの翻訳が可能です。<br>
 
 <h1>使用方法</h1>
-    <ol>
-        <li>TransDictAdderを「PmxEditor_XXXX_data\テンプレート」（和英変換.txtと同階層）に展開する</li>
-        <li>PmxEditorを開き、材質タブに移動し、編集 → 名称の一択編集 → プルダウンから材質を選択</li>
-        <li>和名をクリックし、全材質の名前をコピーする</li>
-        <li>deepl、chatgptなどの翻訳ができるサイトに行き、翻訳する</li>
-        <li>翻訳前のテキストを「PmxEditor_XXXX_data\テンプレート\source.txt」に書き込む</li>
-        <li>翻訳後のテキストを「PmxEditor_XXXX_data\テンプレート\translate.txt」に書き込む</li>
-        <li>TransDictAdder.exeを起動し、指示に従う。</li>
-        <li>PmxEditorの名称の一択編集画面に戻り、編集 → 「辞書から和名→英名作成(E) Ctrl+E」をクリック</li>
-        <li>編集 → 「確定(D) Ctrl+P」をクリック</li>
-        <li>編集 → 「辞書から英名→和名作成(J) Ctrl+J」をクリック</li>
-        <li>編集 → 「確定(D) Ctrl+P」をクリック</li>
-        <li>保存して完了</li>
-    </ol>
+    pmxフォルダ内に翻訳したいモデルさんのpmmをコピペ<br>
+    exeを起動し、翻訳結果をmaterial_trans_list.txtに入力<br>
+    dictionary.txtをプラグイン内の辞書と置き換え<br>
 
 <h1>使用条件</h1>
 必須事項: 禁止事項に触れないよう利用し、公式配布モデルの規約に同意できる方のみ使用可能。
