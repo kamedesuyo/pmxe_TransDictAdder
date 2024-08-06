@@ -4,9 +4,9 @@
 pmx内に複数の.pmmを入れることで同時に複数のモデルさんの翻訳が可能です。<br>
 
 <h1>使用方法</h1>
-    pmxフォルダ内に翻訳したいモデルさんのpmmをコピペ<br>
-    exeを起動し、翻訳結果をmaterial_trans_list.txtに入力<br>
-    dictionary.txtをプラグイン内の辞書と置き換え<br>
+    <ol>pmxフォルダ内に翻訳したいモデルさんのpmmをコピペ<br></ol>
+    <ol>exeを起動し、翻訳結果をmaterial_trans_list.txtに入力<br></ol>
+    <ol>dictionary.txtをプラグイン内の辞書と置き換え<br></ol>
 
 <h1>使用条件</h1>
 必須事項: 禁止事項に触れないよう利用し、公式配布モデルの規約に同意できる方のみ使用可能。
