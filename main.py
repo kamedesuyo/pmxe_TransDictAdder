@@ -6,10 +6,18 @@ material_list_path = "material_list.txt"
 material_trans_list_path = "material_trans_list.txt"
 dictionary_path = "dictionary.txt"
 check_path = [material_list_path, material_trans_list_path, dictionary_path]
-# ファイルが存在しない場合、作成
+
+# 辞書パス取得
+with open("dict_path.txt", 'r', encoding="utf-8") as f:
+    path = f.read().replace(" ", "").replace("\"","")
+    if 0 < len(path) and os.path.exists(path):
+        dictionary_path = path
+    elif 0 < len(path) and not os.path.exists(path):
+        print(f"エラー: 辞書ファイルパス:{path}が存在しません。")
+        print(f"同階層にdictionary.txtを生成して続行します。{dictionary_path}")
+# dict_path先に存在しない or dict_path内に記述がない場合、作成
 for path in check_path:
     if not os.path.exists(path):
-        print(f"{path}を生成します。")
         open(path, 'w', encoding="utf-8").close()
 
 file_list = glob.glob(os.path.join("pmx", "*.pmx"))
@@ -18,6 +26,17 @@ dictionary_data = {}
 material_list = []
 material_trans_list = []
 error_list = []
+
+
+def exit_process():
+    input("\nenterキーを押して終了...")
+    os.remove(material_list_path)
+    os.remove(material_trans_list_path)
+    exit(-1)
+
+def show_load_error():
+    for error in error_list:
+        print(error)
 
 def get_material_list():
     for file in file_list:
@@ -31,9 +50,7 @@ def get_material_list():
             error_list.append(f"{file}の読み込みに失敗しました。")
     if len(material_list) == 0:
         print("追加するマテリアル名が見つかりませんでした。\npmxフォルダ内にpmmが含まれているか確認してください。")
-        input("enterキーを押して終了...")
-        exit(-1)
-
+        exit_process()
 def get_material_trans_list():
     global material_trans_list
     while(1):
@@ -53,8 +70,7 @@ def get_material_trans_list():
                             trans.delete()
                     return material_trans_list
         except KeyboardInterrupt:
-            print("\n終了しています...")
-            exit(-1)
+            exit_process()
         except Exception as e:
             print(e)
             input("enterキーを押して再度入力してください。")
@@ -78,10 +94,7 @@ def write_material_names() -> None:
                 f.write(f"{material}\n")
             except Exception as e:
                 error_list.append(f"ファイル書き込み中にエラーが発生しました:{e}")
-
-def show_load_error():
-    for error in error_list:
-        print(error)
+                exit_process()
 
 def main():
     # 流れ: pmxファイルからマテリアル名取得 -> 翻訳結果取得 -> 辞書作成 -> dictionary.txtを読み込んで辞書化 -> 辞書アップデート -> dictionary.txtに書き込む
@@ -89,7 +102,7 @@ def main():
     global material_list
     global material_trans_list
     global dictionary_data
-
+    
     get_dictionary_data()
     # マテリアル名取得、書き出し処理
     get_material_list()
@@ -106,15 +119,13 @@ def main():
     # 元の辞書データを取得、辞書化してアップデート
     trans_dict.update(dictionary_data)
     
-    with open(dictionary_path, 'w', encoding="utf-8") as f:
+    with open(dictionary_path, 'a', encoding="utf-8") as f:
         for k,v in trans_dict.items():
             f.write(f"{k},{v}\n")
-    input("処理終了\ndictionary.txtに書き込みが完了しました。")
-    print("material_list.txtとmaterial_trans_list.txtを削除しました")
-    os.remove(material_list_path)
-    os.remove(material_trans_list_path)
-    input("enterキーを押して終了...")
-
+    input(f"処理終了\n{dictionary_path}に書き込みが完了しました。")
+    print("material_list.txtとmaterial_trans_list.txtを削除します")
+    exit_process()
+    
     
 
 if __name__ == '__main__':
