@@ -6,12 +6,19 @@ import os
 material_list_path = "material_list.txt"
 material_trans_list_path = "material_trans_list.txt"
 dictionary_path = "dictionary.txt"
-check_list_path = [material_list_path, material_trans_list_path]
+dict_path = "dict_path.txt"
+check_list_path = [material_list_path, material_trans_list_path,dict_path]
 
 dictionary_data = {}     # 辞書データ
 error_list = []          # pmxロード時エラーリスト
 material_list = []       # マテリアル名リスト
 material_trans_list = [] # 翻訳結果リスト
+
+# 各種list_pathのチェック
+# list,trans_listファイルが存在しない場合、空ファイルを作成
+for path in check_list_path:
+    if not os.path.exists(path):
+        open(path, 'w', encoding="utf-8").close()
 
 # dict_pathのチェック
 # try get dict path -> 存在しない or 空の場合、dictionary.txtを作成
@@ -26,18 +33,12 @@ with open("dict_path.txt", 'r', encoding="utf-8") as f:
         print(f"同階層にdictionary.txtを生成して続行します。{dictionary_path}")
         open(dictionary_path, 'w', encoding="utf-8").close()
 
-# 各種list_pathのチェック
-# list,trans_listファイルが存在しない場合、空ファイルを作成
-for path in check_list_path:
-    if not os.path.exists(path):
-        open(path, 'w', encoding="utf-8").close()
-
 # 終了処理
 def exit_process():
     input("\nenterキーを押して終了...")
     os.remove(material_list_path)
     os.remove(material_trans_list_path)
-    exit(-1)
+    os._exit(-1)
 
 # pmxファイルロード時のエラーメッセージ表示
 def show_load_error():
@@ -57,21 +58,26 @@ def get_dictionary_data():
 
 #pmxファイルからマテリアル名取得
 def get_material_list():
-    #  pmxフォルダ内pmxを取得 と pmxフォルダ内->フォルダ内pmx
+    #  pmxフォルダ内 → pmx と pmxフォルダ内 → モデルフォルダ内→ pmx を取得
+    if os.path.exists("pmx") == False:
+        print("pmxフォルダが見つかりませんでした。")
+        exit_process()
     file_list = glob.glob(os.path.join("pmx","*.pmx"))
     file_list.extend(glob.glob(os.path.join("pmx","*/*.pmx")))
     print(f"読み込んだpmx→{file_list}")
+    # pathからpmxファイルを読み込み、マテリアル名を取得(sorterd,unique)、len=0の場合はエラー表示
     for file in file_list:
         try:
             pmx = pmxreader.read_from_file(file)
             for material in pmx.materials:
                 if material.name not in dictionary_data.keys():
                     material_list.append(material.name)
+            if len(material_list) == 0:
+                print("追加するマテリアル名が見つかりませんでした。\npmxフォルダ内にpmmが含まれているか確認してください。")
+                exit_process()
+            material_list = sorted(list(set(material_list)))
         except Exception as e:
             error_list.append(f"{file}の読み込みに失敗しました。")
-    if len(material_list) == 0:
-        print("追加するマテリアル名が見つかりませんでした。\npmxフォルダ内にpmmが含まれているか確認してください。")
-        exit_process()
         
 # 取得したmaterial_listをmaterial_list.txtに書き出す
 def write_material_names() -> None:
