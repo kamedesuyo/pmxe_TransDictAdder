@@ -1,11 +1,11 @@
 # pmxe_TransDictAdder<br>
 <h5>追加UVの存在しているモデルさんや、pmd形式には対応していません。</h5>
 「TransDictAdder」は、モデル翻訳支援プラグインを使用する際の辞書を生成するためのアプリケーションです。<br>
-pmxフォルダ内に複数の.pmmを入れることで同時に複数のモデルさんのマテリアル名を取得し、翻訳が可能になります。<br>
+pmxフォルダ内に複数の.pmxを入れることで同時に複数のモデルさんのマテリアル名を取得し、翻訳が可能になります。<br>
 exeと同階層に存在するdict_path.txtにモデル翻訳支援プラグイン内にあるdictionaryの絶対パスを入れておくと自動で追記していってくれます。<br>
 
 <h1>使用方法</h1>
-    <ol>pmxフォルダ内に翻訳したいモデルさんのpmmをコピペ<br></ol>
+    <ol>pmxフォルダ内に翻訳したいモデルさんのpmxをコピペ<br></ol>
     <ol>TransDictAdder.exeを起動</ol>
     <ol>material_list.txtが生成されるのでChatGPTやDeepl等で翻訳した結果をmaterial_trans_list.txtに入力<br></ol>
     <ol>dictionary.txtをプラグイン内の辞書と置き換え(dict_pathを設定している場合は不要)<br></ol>
