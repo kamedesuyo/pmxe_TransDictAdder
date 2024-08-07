@@ -17,12 +17,14 @@ material_trans_list = [] # 翻訳結果リスト
 # try get dict path -> 存在しない or 空の場合、dictionary.txtを作成
 with open("dict_path.txt", 'r', encoding="utf-8") as f:
     path = f.read().replace(" ", "").replace("\"","")
-    # パスが存在する場合、dictionary_pathを更新, 存在しない場合はdictionary.txtを作成
+    # パス設定が存在し、ファイルが存在する場合、dictionary_pathを更新
     if 0 < len(path) and os.path.exists(path):
         dictionary_path = path
-    elif 0 < len(path) and not os.path.exists(path):
-        print(f"エラー: 辞書ファイルパス:{path}が存在しません。")
+    # パス設定が存在するが、ファイルが存在しない場合 or パス設定が存在しない場合、dictionary.txtを作成
+    elif 0 < len(path) and not os.path.exists(path)or not 0 < len(path):
+        print(f"dictionary.txtが見つかりませんでした。")
         print(f"同階層にdictionary.txtを生成して続行します。{dictionary_path}")
+        open(dictionary_path, 'w', encoding="utf-8").close()
 
 # 各種list_pathのチェック
 # list,trans_listファイルが存在しない場合、空ファイルを作成
@@ -55,8 +57,10 @@ def get_dictionary_data():
 
 #pmxファイルからマテリアル名取得
 def get_material_list():
-    # pmxファイル取得
-    file_list = glob.glob(os.path.join("pmx", "*.pmx"))
+    #  pmxフォルダ内pmxを取得 と pmxフォルダ内->フォルダ内pmx
+    file_list = glob.glob(os.path.join("pmx","*.pmx"))
+    file_list.extend(glob.glob(os.path.join("pmx","*/*.pmx")))
+    print(f"読み込んだpmx→{file_list}")
     for file in file_list:
         try:
             pmx = pmxreader.read_from_file(file)
@@ -101,8 +105,6 @@ def get_material_trans_list():
             exit_process()
         except Exception as e:
             input(f"エラーが発生しました:{e}\nEnterキーを押して再度実行してください。")
-
-
 # main処理
 def main():
     global material_list
