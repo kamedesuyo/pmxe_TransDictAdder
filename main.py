@@ -27,11 +27,11 @@ with open("dict_path.txt", 'r', encoding="utf-8") as f:
     # パス設定が存在し、ファイルが存在する場合、dictionary_pathを更新
     if 0 < len(path) and os.path.exists(path):
         dictionary_path = path
-    # パス設定が存在するが、ファイルが存在しない場合 or パス設定が存在しない場合、dictionary.txtを作成
-    elif 0 < len(path) and not os.path.exists(path)or not 0 < len(path):
+    # パス設定が存在するが、ファイルが存在しない場合、dictionary.txtを作成
+    elif 0 < len(path) and not os.path.exists(path):
         print(f"dictionary.txtが見つかりませんでした。")
-        print(f"同階層にdictionary.txtを生成して続行します。{dictionary_path}")
-        open(dictionary_path, 'w', encoding="utf-8").close()
+        print(f"{dictionary_path}を使用します。")
+        
 
 # 終了処理
 def exit_process():
@@ -48,16 +48,22 @@ def show_load_error():
 # dictionary.txtのデータ取得
 def get_dictionary_data():
     global dictionary_data
-    with open(dictionary_path, "r", encoding="utf-8") as f:
-        dictionary_list = f.read().replace(" ", "").split("\n")
+    try:
+        with open(dictionary_path, "r+", encoding="utf-8") as f:
+            dictionary_list = f.read().replace(" ", "").split("\n")
         # dictionary.txtのデータを辞書型に変換
         for i in range(len(dictionary_list)-1):
             k = dictionary_list[i].split(",")[0]
             v = dictionary_list[i].split(",")[1]
             dictionary_data[k] = v
 
+    except FileNotFoundError:
+        print("dictionary.txtが見つかりませんでした。")
+        print("同階層にdictionary.txtを生成して続行します。")
+        open(dictionary_path, "w", encoding="utf-8").close()
 #pmxファイルからマテリアル名取得
 def get_material_list():
+    global material_list
     #  pmxフォルダ内 → pmx と pmxフォルダ内 → モデルフォルダ内→ pmx を取得
     if os.path.exists("pmx") == False:
         print("pmxフォルダが見つかりませんでした。")
@@ -97,15 +103,13 @@ def get_material_trans_list():
             input("material_trans_list.txtに翻訳結果を入力後、enterキーを押してください。(終了:Ctrl+C)")
             with open(material_trans_list_path, 'r', encoding="utf-8") as f:
                 material_trans_list = f.read().replace(" ", "").split("\n")
+                material_trans_list = list(filter(lambda x: x != "", material_trans_list))
                 # 翻訳結果が空、行数が違う、keyboardInterruptの場合は終了、それ以外は空の翻訳結果リストを削除
                 if material_trans_list == [""]:
                     print("翻訳結果が空です。")
                 elif len(material_list) != len(material_trans_list):
                     print("マテリアル名と翻訳結果の行数が一致しません。")
                 else:
-                    for trans in material_trans_list:
-                        if trans == "":
-                            trans.delete()
                     return material_trans_list
         except KeyboardInterrupt:
             exit_process()
@@ -136,7 +140,7 @@ def main():
     trans_dict.update(dictionary_data)
     
     # trans_dictをdictionary.txtに書き込み
-    with open(dictionary_path, 'a', encoding="utf-8") as f:
+    with open(dictionary_path, 'r+', encoding="utf-8") as f:
         for k,v in trans_dict.items():
             f.write(f"{k},{v}\n")
     input(f"処理終了\n{dictionary_path}に書き込みが完了しました。")
