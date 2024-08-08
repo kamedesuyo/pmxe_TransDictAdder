@@ -26,8 +26,4 @@ exeと同階層に存在するdict_path.txtにモデル翻訳支援プラグイ�
 
 <h1>クレジット</h1>
 作者：かめのこ<br>
-Twitter: @kamenoko_mmd<br>
-<br>
-release<br>
-v1.0 - (2024/07/20)<br>
-v2.0 - (2024/08/06)
+Twitter: @kamenoko_mmd
