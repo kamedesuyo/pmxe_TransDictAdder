@@ -14,7 +14,6 @@ def read_dictionary(path:str)->dict:
         return {}
 
 def write_file(path:str,materials:dict):
-    # materials.txtに材質名を書き込む
     with open(path,"w",encoding="utf-8") as f:
         f.write('\n'.join(materials.keys()))
         print(f"{path}への書き込みが完了しました。")
