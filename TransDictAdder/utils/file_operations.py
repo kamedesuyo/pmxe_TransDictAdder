@@ -16,10 +16,10 @@ def read_dictionary(path:str)->dict:
 def write_file(path:str,materials:dict):
     with open(path,"w",encoding="utf-8") as f:
         f.write('\n'.join(materials.keys()))
-        print(f"{path}への書き込みが完了しました。")
+        print(f"書き込みが完了しました。\n   {path}")
 
 def write_dictionary(path:str,materials:dict):
     with open(path,"a+",encoding="utf-8") as f:
         f.write("\n".join([f"{k}, {v}" for k,v in materials.items()]))
         f.write("\n")
-        print(f"{path}への書き込みが完了しました。")
+        print(f"書き込みが完了しました。\n   {path}")
