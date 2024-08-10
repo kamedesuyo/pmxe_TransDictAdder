@@ -16,14 +16,14 @@ def main():
         # pmxの読み込みと書き込み
         materials = load_materials_dict(dictionary_data)
         if not materials:
-            print("追加する材質名が見つかりませんでした。")
+            print("追加する材質名が見つかりませんでした。\n全て登録済み、またはmodelsフォルダが存在していない可能性があります。")
             return
         print(f"\n読み込んだ材質名:{len(materials)}個\n{", ".join(materials.keys())}")
         write_file(materials_path,materials)
         # 翻訳結果の入力
         while True:
-            input("materials.txtの翻訳結果をtrans_result.txtに入力し、Enterを押してください。(Ctrl+Cで中断)")
             trans_materials = read_file(trans_result_path)
+            input("materials.txtの翻訳結果をtrans_result.txtに入力し、Enterを押してください。(Ctrl+Cで中断)")
             if verify_materials(materials,trans_materials):
                 break
         # 辞書への書き込み
