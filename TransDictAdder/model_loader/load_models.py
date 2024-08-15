@@ -1,13 +1,12 @@
 import pymeshio.pmx.reader as pmxreader
-import glob
-
+from TransDictAdder.utils.get_pmxfile_path import get_pmxfile
 
 def load_materials_dict(dictionary_data:dict) -> dict:
     load_models_name = []
     load_models_error = []
     load_models_material = {}
     
-    pmx_files = glob.glob("models/**/*.pmx",recursive=True)
+    pmx_files = get_pmxfile()
     for pmx_file in pmx_files:
         try:
             pmx = pmxreader.read_from_file(pmx_file)

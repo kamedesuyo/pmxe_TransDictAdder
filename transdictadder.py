@@ -1,6 +1,7 @@
 from TransDictAdder.model_loader.load_models import load_materials_dict
 from TransDictAdder.utils.file_operations import write_file, read_file,write_dictionary,read_dictionary
 from TransDictAdder.validation.material_valid import verify_materials, verify_dict_path
+from TransDictAdder.model_renamer.model_rename import model_rename
 
 materials_path = "materials.txt"
 trans_result_path = "trans_result.txt"
@@ -9,6 +10,7 @@ dict_path = "dict_path.txt"
 
 def main():
     try:
+        # dict_path内のパスを読み込む
         global dictionary_path
         dictionary_path = verify_dict_path(dict_path, dictionary_path)
         # 辞書の先読み
@@ -22,12 +24,16 @@ def main():
         write_file(materials_path,materials)
         # 翻訳結果の入力
         while True:
-            trans_materials = read_file(trans_result_path)
             input("materials.txtの翻訳結果をtrans_result.txtに入力し、Enterを押してください。(Ctrl+Cで中断)")
+            trans_materials = read_file(trans_result_path)
             if verify_materials(materials,trans_materials):
                 break
+        materials_dict = dict(zip(materials,trans_materials))
+        #model情報取得 → material読み込み → material_dictからrename → pmx更新
+        if input("リネーム済みモデルを生成しますか？(y/n):") == "y":
+            model_rename(materials_dict)
         # 辞書への書き込み
-        write_dictionary(dictionary_path,dict(zip(materials,trans_materials)))
+        write_dictionary(dictionary_path,materials_dict)
         input("全ての処理が完了しました。Enterを押して終了...")
 
     except KeyboardInterrupt: 
