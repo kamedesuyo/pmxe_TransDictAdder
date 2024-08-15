@@ -1,7 +1,7 @@
 import pymeshio.pmx.reader as pmxreader
-from TransDictAdder.model_loader.load_models import get_pmxfile_path
+from TransDictAdder.utils.file_operations import get_pmxfile_path
 
-def get_valid_pmx_paths(pmx_paths:list,show_detail_info:bool = True) -> list:
+def get_valid_pmx_paths(show_detail_info:bool = True) -> list:
     load_models_name = []
     load_models_error = []
     load_models_paths = []
@@ -17,6 +17,7 @@ def get_valid_pmx_paths(pmx_paths:list,show_detail_info:bool = True) -> list:
         except Exception as e:
             load_models_error.append(f"エラー: {pmx_path}  {str(e)}")
     if show_detail_info:
-        print(f"{len(load_models_name)}体のモデルさんの読み込みに成功しました。\n   [{", ".join(load_models_name)}]")
-        print(f"{len(load_models_error)}体のモデルさんの読み込み時にエラーが発生しました。\n   {"\n   ".join(load_models_error)}")
+        print(f"{len(load_models_name)}体のモデルさんの読み込みに成功しました。\n[{", ".join(load_models_name)}]")
+        if len(load_models_error):
+            print(f"{len(load_models_error)}体のモデルさんの読み込み時にエラーが発生しました。\n   {"\n   ".join(load_models_error)}")
     return load_models_paths
