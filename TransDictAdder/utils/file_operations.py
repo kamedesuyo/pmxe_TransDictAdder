@@ -1,3 +1,10 @@
+import glob 
+
+def get_pmxfile_path(default_directory:str = "models/")->list:
+    files = glob.glob(f"{default_directory}**/*.pmx",recursive=True)
+    files = [f for f in files if "_rename" not in f]
+    return files
+
 def read_file(path:str)->list:
     try:
         with open(path, "r",encoding="utf-8") as f:
