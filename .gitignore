@@ -5,3 +5,4 @@ models
 icon
 __pycache__
 pyinstaller
+test
