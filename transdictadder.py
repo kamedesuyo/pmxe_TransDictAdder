@@ -30,8 +30,12 @@ def main():
                 break
         materials_dict = dict(zip(materials,trans_materials))
         #model情報取得 → material読み込み → material_dictからrename → pmx更新
-        if input("リネーム済みモデルを生成しますか？(y/n):") == "y":
-            model_rename(materials_dict)
+        while True:
+            do_model_rename = input("リネーム済みモデルを生成しますか？(y/n):").lower()
+            if do_model_rename == "y" or do_model_rename == "n":
+                model_rename(materials_dict)
+                break
+
         # 辞書への書き込み
         write_dictionary(dictionary_path,materials_dict)
         input("全ての処理が完了しました。Enterを押して終了...")
