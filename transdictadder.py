@@ -18,7 +18,7 @@ def main():
         # pmxの読み込みと書き込み
         materials = load_materials_dict(dictionary_data)
         if not materials:
-            print("追加する材質名が見つかりませんでした。\n全て登録済み、またはmodelsフォルダが存在していない可能性があります。")
+            input("追加する材質名が見つかりませんでした。\n全て登録済み、またはmodelsフォルダが存在していない可能性があります。")
             return
         print(f"\n読み込んだ材質名:{len(materials)}個\n{", ".join(materials.keys())}")
         write_file(materials_path,materials)
@@ -37,9 +37,6 @@ def main():
         input("全ての処理が完了しました。Enterを押して終了...")
 
     except KeyboardInterrupt: 
-        print("\n処理を中断しました。")
-    
-    except Exception as e:
-        print(f"\nエラーが発生しました。{e}")
+        input("\n処理を中断しました。")
 if __name__ == "__main__":
     main()
