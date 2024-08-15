@@ -4,3 +4,4 @@ models
 *.txt
 icon
 __pycache__
+pyinstaller
