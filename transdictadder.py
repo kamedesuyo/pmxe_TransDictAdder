@@ -14,8 +14,9 @@ def process_materials():
     dictionary.txtから材質名を読み込み、未登録の材質名をmaterials.txtに書き込む。
     その後、materials.txtの翻訳結果をtrans_result.txtに入力する。
     """
-    dictionary_path_local = verify_dict_path(dict_path, dictionary_path)
-    dictionary_data = read_dictionary(dictionary_path_local)
+    global dictionary_path
+    dictionary_path = verify_dict_path(dict_path, dictionary_path)
+    dictionary_data = read_dictionary(dictionary_path)
     materials = load_materials_dict(dictionary_data)
     
     if not materials:
@@ -46,7 +47,6 @@ def check_do_rename(materials: dict, dictionary_data: dict):
         do_model_rename = input("リネーム済みモデルを生成しますか？(y/n):").lower()
         if do_model_rename in {"y", "n"}:
             if do_model_rename == "y":
-                print(materials | dictionary_data)
                 model_rename(materials | dictionary_data)
             break
 
