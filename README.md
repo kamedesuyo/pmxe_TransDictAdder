@@ -1,6 +1,6 @@
 # pmxe_TransDictAdder<br>
 <h5>追加UVの存在しているモデルさんや、pmd形式には対応していません。</h5>
-「TransDictAdder」は、モデル翻訳支援プラグインを使用する際の辞書を生成するためのpythonスクリプトです。releaseにexeファイルがあります。<br>
+「TransDictAdder」は、モデル翻訳支援プラグイン(https://bowlroll.net/file/322477)を使用する際の辞書を生成するためのpythonスクリプトです。releaseにexeファイルがあります。<br>
 仕様としてはmodelsフォルダ内に存在する.pmxファイルを再帰的にすべて読み込んで材質名を吐き出すので、翻訳名を入力することで辞書が作れます。<br>
 exeと同階層に存在するdict_path.txtにモデル翻訳支援プラグイン内にあるdictionaryの絶対パスを入れておくと自動で追記していってくれます。<br>
 
